@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
+let logs = [];
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('webhook is running.');
+});
+
+app.get('/logs', (req, res) => {
+  res.send(logs);
 });
 
 app.get('/webhook', (req, res) => {
@@ -27,9 +32,13 @@ app.post('/webhook', (req, res) => {
   let body = req.body;
 
   if (body.object === 'page') {
-    body.entry.forEach(function(entry) {
+    body.entry.forEach( entry => {
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
+      logs.push(webhook_event);
+      let sender_psid = webhook_event.sender.id;
+      console.log('Sender PSID: ' + sender_psid); 
+      logs.push(sender_psid);
     });
 
     res.status(200).send('EVENT_RECEIVED');
