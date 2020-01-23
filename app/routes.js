@@ -88,7 +88,7 @@ const handleMessage = (sender_psid, received_message) => {
                 "type": "postback",
                 "title": "No!",
                 "payload": "no",
-              },
+              }
             ],
           }],
         },
