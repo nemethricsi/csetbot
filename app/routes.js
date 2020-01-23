@@ -38,7 +38,7 @@ app.post('/webhook', (req, res) => {
       logs.push(webhook_event);
       let sender_psid = webhook_event.sender.id;
       console.log('Sender PSID: ' + sender_psid); 
-      logs.push(sender_psid);
+      // logs.push(sender_psid);
     });
 
     res.status(200).send('EVENT_RECEIVED');
