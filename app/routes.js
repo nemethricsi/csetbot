@@ -92,8 +92,10 @@ const callSendAPI = (sender_psid, response) => {
   }, (err, res, body) => {
     if (!err) {
       console.log('message sent!')
+      logs.push('message sent!');
     } else {
       console.error("Unable to send message:" + err);
+      logs.push(`nemjó: ${err}`);
     }
   }); 
   
