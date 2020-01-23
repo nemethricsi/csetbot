@@ -74,7 +74,7 @@ const handleMessage = (sender_psid, received_message) => {
         "type": "template",
         "payload": {
           "template_type": "generic",
-          "elemets": [{
+          "elements": [{
             "title": "Is that the right picture?",
             "subtitle": "Tap a button to answer.",
             "image_url": attachment_url,
