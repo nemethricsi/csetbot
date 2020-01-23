@@ -69,6 +69,31 @@ const handleMessage = (sender_psid, received_message) => {
   } else if (received_message.attachments) {
     let attachment_url = received_message.attachments[0].payload.url;
     logs.push(`attachment URL: ${attachment_url}`);
+    response = {
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elemets": [{
+            "title": "Is that the right picture?",
+            "subtitle": "Tap a button to answer.",
+            "image_url": attachment_url,
+            "buttons": [
+              {
+                "type": "postback",
+                "title": "Yes!",
+                "payload": "yes",
+              },
+              {
+                "type": "postback",
+                "title": "No!",
+                "payload": "no",
+              },
+            ],
+          }],
+        },
+      },
+    }
   }
 
   callSendAPI(sender_psid, response);
