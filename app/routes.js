@@ -79,6 +79,7 @@ const handlePostback = (sender_psid, received_postback) => {
 // Sends response messages via the Send API
 const callSendAPI = (sender_psid, response) => {
   let request_body = {
+    "messaging_type": "RESPONSE",
     "recipient": {
       "id": sender_psid,
     },
