@@ -64,7 +64,7 @@ const handleMessage = (sender_psid, received_message) => {
 
   if (received_message.text) {
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an image!`,
+      "text": `Azt küldted, hogy: "${received_message.text}". Most küldj egy képet!`,
     };
   } else if (received_message.attachments) {
     let attachment_url = received_message.attachments[0].payload.url;
@@ -75,18 +75,18 @@ const handleMessage = (sender_psid, received_message) => {
         "payload": {
           "template_type": "generic",
           "elements": [{
-            "title": "Is that the right picture?",
-            "subtitle": "Tap a button to answer.",
+            "title": "Ezt a képet akartad?",
+            "subtitle": "Válaszolj a gombokkal.",
             "image_url": attachment_url,
             "buttons": [
               {
                 "type": "postback",
-                "title": "Yes!",
+                "title": "Igen!",
                 "payload": "yes",
               },
               {
                 "type": "postback",
-                "title": "No!",
+                "title": "Nem!",
                 "payload": "no",
               }
             ],
@@ -106,9 +106,9 @@ const handlePostback = (sender_psid, received_postback) => {
   let payload = received_postback.payload;
 
   if (payload === 'yes') {
-    response = {"text": "Thanks!"};
+    response = {"text": "Köszi!"};
   } else if (payload === 'no') {
-    response = {"text": "Oops, try sending another image."};
+    response = {"text": "Upsz, akkor küldj egy másikat!"};
   }
 
   callSendAPI(sender_psid, response);
