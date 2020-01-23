@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/webhook', (req, res) => {
-  res.send('ok');
+  res.send('webhook ok');
 });
 
 module.exports = app;
